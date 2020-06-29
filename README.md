@@ -16,13 +16,13 @@ go get -u github.com/jangozw/gofresh
 
 
 
-2, 在你的项目跟目录添加一个 ```.gofresh``` 的配置文件, 内容如下:
+2, 在你的项目跟目录添加一个 ```.gofresh``` 的配置文件：
 
 ```bash
 touch .gofresh
 ```
 
-添加：
+添加内容：
 ```text
 # 监控代码变动的目录 . 表示当前目录
 watch_dir:          .
