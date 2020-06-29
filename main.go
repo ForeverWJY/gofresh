@@ -19,11 +19,17 @@ import (
 	"os"
 )
 
+// 默认配置文件 也可以用 gofresh -c {file} 指定
+var confFile = ".gofresh"
+
 func main() {
 	configPath := flag.String("c", "", "config file path")
+	flag.Usage= usage
 	flag.Parse()
-
 	if *configPath != "" {
+		confFile = *configPath
+	}
+/*	if *configPath != "" {
 		if _, err := os.Stat(*configPath); err != nil {
 			fmt.Printf("Can't find config file `%s`\n", *configPath)
 			os.Exit(1)
@@ -31,6 +37,18 @@ func main() {
 			os.Setenv("RUNNER_CONFIG_PATH", *configPath)
 		}
 	}
-
+*/
+	if _, err := os.Stat(confFile); err != nil {
+		fmt.Printf("Can't find config file `%s`\n", confFile)
+		os.Exit(1)
+	} else {
+		os.Setenv("RUNNER_CONFIG_PATH", confFile)
+	}
 	runner.Start()
+}
+
+//
+func usage()  {
+	fmt.Fprintf(os.Stderr, "gofresh 是golang热编译工具。 ref: https://github.com/jangozw/gofresh \nargs:\n")
+	flag.PrintDefaults()
 }

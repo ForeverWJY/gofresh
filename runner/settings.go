@@ -20,6 +20,8 @@ const (
 var settings = map[string]string{
 	"config_path":       "./runner.conf",
 	"root":              ".",
+	"watch_dir":         "./",
+	"build_file":         "main.go",
 	"tmp_path":          "./tmp",
 	"build_name":        "runner-build",
 	"build_log":         "runner-build-errors.log",
@@ -110,6 +112,13 @@ func getenv(key, defaultValue string) string {
 
 func root() string {
 	return settings["root"]
+}
+
+func buildFile() string {
+	return settings["build_file"]
+}
+func watchDir() string {
+	return settings["watch_dir"]
 }
 
 func tmpPath() string {

@@ -1,6 +1,7 @@
 package runner
 
 import (
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -8,9 +9,13 @@ import (
 )
 
 func build() (string, bool) {
-	buildLog("Building...")
 
-	cmd := exec.Command("go", "build", "-o", buildPath(), root())
+	buildCmdStr := fmt.Sprintf("go build -o %s %s", buildPath(), buildFile())
+
+	buildLog("Building...", buildCmdStr)
+
+	// cmd := exec.Command("go", "build", "-o", buildPath(), root())
+	cmd := exec.Command("go", "build", "-o", buildPath(), buildFile())
 
 	stderr, err := cmd.StderrPipe()
 	if err != nil {
