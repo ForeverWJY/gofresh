@@ -58,11 +58,11 @@ log_color_app: green
 
 3, 在项目根目录运行gofresh
 
-gofresh 将按照.gofresh 中的配置实时监控代码变动并运行
 
 ```bash
 
 gofresh
 
 ```
+
 
