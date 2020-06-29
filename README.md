@@ -13,11 +13,17 @@ golang 热编译工具，实时监测代码变动并编译运行. fork来源： 
 ```bash
 go get -u github.com/jangozw/gofresh
 ```
+OR
+```bash
+go get -u gitee.com/jangozw/gofresh
+```
+
+
 
 2, 在你的项目跟目录添加一个.gofresh 的配置文件, 内容如下:
 
 
-```ini
+```text
 # 监控代码变动的目录 . 表示当前目录
 watch_dir:          .
 
