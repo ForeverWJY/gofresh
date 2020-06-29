@@ -1,4 +1,4 @@
-#gofresh
+# gofresh
 
 golang 热编译工具，实时监测代码变动并编译运行. fork来源： https://github.com/gravityblast/fresh
 
@@ -12,10 +12,6 @@ golang 热编译工具，实时监测代码变动并编译运行. fork来源： 
 1, 全局安装 gofresh 命令
 ```bash
 go get -u github.com/jangozw/gofresh
-```
-OR
-```bash
-go get -u gitee.com/jangozw/gofresh
 ```
 
 
