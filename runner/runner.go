@@ -8,7 +8,7 @@ import (
 
 func run() bool {
 
-	runnerLog("Running... "+fmt.Sprintf("%s %s", buildPath(), runArg()))
+	runnerLog("Running... " + fmt.Sprintf("%s %s", buildPath(), runArg()))
 	cmd := exec.Command(buildPath(), runArg())
 
 	stderr, err := cmd.StderrPipe()
