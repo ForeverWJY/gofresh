@@ -12,7 +12,7 @@ func build() (string, bool) {
 
 	buildCmdStr := fmt.Sprintf("go build -o %s %s", buildPath(), buildFile())
 
-	buildLog("Building... "+buildCmdStr)
+	buildLog("Building... " + buildCmdStr)
 
 	// cmd := exec.Command("go", "build", "-o", buildPath(), root())
 	cmd := exec.Command("go", "build", "-o", buildPath(), buildFile())

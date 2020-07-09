@@ -1,14 +1,15 @@
 package runner
 
 import (
+	"fmt"
 	"io"
 	"os/exec"
 )
 
 func run() bool {
-	runnerLog("Running..."+buildPath())
 
-	cmd := exec.Command(buildPath())
+	runnerLog("Running... "+fmt.Sprintf("%s %s", buildPath(), runArg()))
+	cmd := exec.Command(buildPath(), runArg())
 
 	stderr, err := cmd.StderrPipe()
 	if err != nil {
