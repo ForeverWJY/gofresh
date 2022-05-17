@@ -2,6 +2,7 @@ package runner
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
@@ -40,7 +41,8 @@ func beforeBuildExecuteBat() (string, bool) {
 	buildLog(string(utf8))
 	if stderr.String() != "" {
 		gbkToUtf8, _ := GbkToUtf8([]byte(stderr.String()))
-		buildLog(string(gbkToUtf8))
+		buildLog("error:" + string(gbkToUtf8))
+		fatal(errors.New("before Building Failed"))
 	}
 	if err != nil {
 		fatal(err)
