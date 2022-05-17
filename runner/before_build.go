@@ -8,6 +8,7 @@ import (
 	"golang.org/x/text/transform"
 	"io/ioutil"
 	"os/exec"
+	"strings"
 )
 
 func GbkToUtf8(s []byte) ([]byte, error) {
@@ -38,14 +39,22 @@ func beforeBuildExecuteBat() (string, bool) {
 
 	err := cmd.Run()
 	utf8, _ := GbkToUtf8([]byte(out.String()))
-	buildLog(string(utf8))
+	errStr := stderr.String()
+	utf8Str := string(utf8)
+	buildLog(utf8Str)
 	if stderr.String() != "" {
-		gbkToUtf8, _ := GbkToUtf8([]byte(stderr.String()))
-		buildLog("error:" + string(gbkToUtf8))
-		fatal(errors.New("before Building Failed"))
+		//gbkToUtf8, _ := GbkToUtf8([]byte(stderr.String()))
+		//buildLog(string(gbkToUtf8))
+		buildLog(errStr)
+		//fatal(errors.New("before Building Failed"))
 	}
 	if err != nil {
+		buildLog("error:" + err.Error())
 		fatal(err)
+	}
+	if strings.Contains(utf8Str, "before build failed") || strings.Contains(errStr, "before build failed") {
+		//buildLog("before build failed")
+		fatal(errors.New("before build failed"))
 	}
 	buildLog("Before Building... " + buildCmdStr + " done")
 	if err != nil {
