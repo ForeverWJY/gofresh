@@ -36,6 +36,7 @@ var settings = map[string]string{
 	"log_color_runner":  "green",
 	"log_color_watcher": "magenta",
 	"log_color_app":     "",
+	"pre_build_cmd":     "", // windows构建之前执行的命令
 }
 
 var colors = map[string]string{
@@ -158,4 +159,8 @@ func buildDelay() time.Duration {
 	value, _ := strconv.Atoi(settings["build_delay"])
 
 	return time.Duration(value)
+}
+
+func preBuildCmd() string {
+	return settings["pre_build_cmd"]
 }

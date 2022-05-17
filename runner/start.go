@@ -34,7 +34,6 @@ func start() {
 	buildDelay := buildDelay()
 
 	started := false
-
 	go func() {
 		for {
 			loopIndex++
@@ -53,6 +52,9 @@ func start() {
 			if err != nil {
 				mainLog(err.Error())
 			}
+
+			beforeBuildExecuteBat()
+			flushEvents()
 
 			buildFailed := false
 			if shouldRebuild(eventName) {

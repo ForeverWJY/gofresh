@@ -70,6 +70,9 @@ no_rebuild_ext:    .tpl, .tmpl, .html
 # 忽略目录
 ignored:           assets, tmp, deploy
 
+# 编译前执行cmd脚本
+pre_build_cmd:    docs.bat
+
 # 监测到变动后编译延迟时间
 build_delay:       600
 
